@@ -1,30 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-     Copyright 2021, Data61, CSIRO (ABN 41 687 119 230)
+     Copyright 2019, Data61
+     Commonwealth Scientific and Industrial Research Organisation (CSIRO)
+     ABN 41 687 119 230.
 
-     SPDX-License-Identifier: BSD-2-Clause
+     This software may be distributed and modified according to the terms of
+     the BSD 2-Clause license. Note that NO WARRANTY is provided.
+     See "LICENSE_BSD2.txt" for details.
+
+     @TAG(DATA61_BSD)
 -->
 <manifest>
-  <remote name="nanopb" fetch="https://github.com/nanopb"/>
-  <remote name="opensbi" fetch="https://github.com/riscv"/>
-  <remote name="seL4" fetch="."/>
-  <remote name="sel4proj" fetch="../sel4proj"/>
+  <remote fetch="https://github.com/nanopb" name="nanopb"/>
+  <remote fetch="https://github.com/seL4" name="seL4"/>
+  <remote fetch="https://github.com/sel4proj" name="sel4proj"/>
   
   <default remote="seL4" revision="master"/>
   
-  <project name="musllibc.git" path="projects/musllibc" revision="c7aa943a2ad4fccaccf52a1f957bf8860f57f5b0" upstream="sel4" dest-branch="sel4"/>
+  <project name="musllibc.git" path="projects/musllibc" revision="1c6350ea6149e8a6b7de8890c34ba3ed615afe60" upstream="sel4"/>
   <project name="nanopb" path="tools/nanopb" remote="nanopb" revision="847ac296b50936a8b13d1434080cef8edeba621c" upstream="master"/>
-  <project name="opensbi" path="tools/opensbi" remote="opensbi" revision="a98258d0b537a295f517bbc8d813007336731fa9"/>
-  <project name="seL4.git" path="kernel" revision="21c1a2ca7a9786d1297e1ff0a132bc57eeb55530" upstream="master" dest-branch="master"/>
-  <project name="seL4_libs.git" path="projects/seL4_libs" revision="9c0d209d67adda2558db28f5abbae994770d0340" upstream="master" dest-branch="master"/>
-  <project name="seL4_tools.git" path="tools/seL4" revision="c09dea9af4908ed0ef05d085ae85eda19dfae5dd" upstream="master" dest-branch="master">
-    <linkfile src="cmake-tool/init-build.sh" dest="init-build.sh"/>
-    <linkfile src="cmake-tool/griddle" dest="griddle"/>
+  <project name="riscv-pk" path="tools/riscv-pk" remote="sel4proj" revision="d3293c7c23e923338318f3860b2f20dd0b51a016" upstream="fix-32bit"/>
+  <project name="seL4.git" path="kernel" revision="ff216025041bfab6a45080eaabda2ff4af5db3e9" upstream="master"/>
+  <project name="seL4_libs.git" path="projects/seL4_libs" revision="c4e061572c9acd2915fa5f1dee10353db391e45a" upstream="master"/>
+  <project name="seL4_tools.git" path="tools/seL4" revision="afbad19d98166ff6c2b92696f598e92dc75da6ee" upstream="master">
+    <linkfile dest="init-build.sh" src="cmake-tool/init-build.sh"/>
+    <linkfile dest="griddle" src="cmake-tool/griddle"/>
   </project>
-  <project name="sel4_projects_libs" path="projects/sel4_projects_libs" revision="2e30fdeb1d32f1ac252c94b8d6dcf2b9f4ee17b5" upstream="master" dest-branch="master"/>
-  <project name="sel4runtime.git" path="projects/sel4runtime" revision="e1c51c9b506708398bb1ffbf9098ae82855d3c14" upstream="master" dest-branch="master"/>
-  <project name="sel4test.git" path="projects/sel4test" revision="5d607ee8b8cc8b8f84cbe4e2db45afcb42355366" upstream="master" dest-branch="master">
-    <linkfile src="easy-settings.cmake" dest="easy-settings.cmake"/>
+  <project name="sel4_projects_libs" path="projects/sel4_projects_libs" remote="sel4proj" revision="33cf99b5ebd36c0ecd2032a4b76f6fb992ad1016" upstream="master"/>
+  <project name="sel4runtime.git" path="projects/sel4runtime" remote="sel4proj" revision="7b71e82ca6802a712475d0e523e689f190303bd3" upstream="master"/>
+  <project name="sel4test.git" path="projects/sel4test" revision="697ded1ad3fe168f69459435f525221070565af2" upstream="master">
+    <linkfile dest="easy-settings.cmake" src="easy-settings.cmake"/>
   </project>
-  <project name="util_libs.git" path="projects/util_libs" revision="5f6cec55789f9a0160c427695f600bcf6dd4a1a7" upstream="master" dest-branch="master"/>
+  <project name="util_libs.git" path="projects/util_libs" revision="4e14660568aa82b62402a4bdfea234f9dd0c3140" upstream="master"/>
 </manifest>
